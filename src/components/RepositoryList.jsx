@@ -68,9 +68,10 @@ const RepositoryList = () => {
           description={item.description}
           language={item.language}
           forksCount={item.forksCount}
-          stargazetsCount={item.stargazetsCount}
+          stargazersCount={item.stargazersCount}
           ratingAverage={item.ratingAverage}
           reviewCount={item.reviewCount}
+          ownerAvatarUrl={item.ownerAvatarUrl}
           style={separator}
         />
       )}
