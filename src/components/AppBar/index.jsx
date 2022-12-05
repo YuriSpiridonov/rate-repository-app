@@ -13,15 +13,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#24292e",
   },
   tab: {
-    paddingLeft: 8,
-    paddingBottom: 8,
+    marginLeft: 16, //8,
+    marginBottom: 16, //8,
   },
 });
 
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <AppBarTab style={styles.tab} tabName={"Repositories"} />
+      <AppBarTab tabName={"Repositories"} path="/" style={styles.tab} />
+      <AppBarTab tabName={"Sign In"} path="/SignIn" style={styles.tab} />
     </View>
   );
 };
