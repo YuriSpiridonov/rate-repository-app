@@ -1,20 +1,12 @@
-import { View, Pressable } from "react-native";
-import Text from "../Text";
+import { Link } from "react-router-native";
 
-const AppBarTab = ({ tabName, style }) => {
+import TabText from "./TabText";
+
+const AppBarTab = ({ tabName, path, onPress, style }) => {
   return (
-    <View style={style}>
-      <Pressable>
-        <Text
-          color="white"
-          fontSize="subheading"
-          fontWeight="bold"
-          style={style}
-        >
-          {tabName}
-        </Text>
-      </Pressable>
-    </View>
+    <Link onPress={onPress} to={path}>
+      <TabText text={tabName} style={style} />
+    </Link>
   );
 };
 
