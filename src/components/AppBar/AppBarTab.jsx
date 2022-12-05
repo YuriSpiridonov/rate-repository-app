@@ -1,5 +1,5 @@
 import { View, Pressable } from "react-native";
-import Text from "./Text";
+import Text from "../Text";
 
 const AppBarTab = ({ tabName, style }) => {
   return (
