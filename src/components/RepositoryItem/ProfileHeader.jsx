@@ -3,13 +3,14 @@ import { View, StyleSheet } from "react-native";
 import AvatarImage from "./AvatarImage";
 import Text from "../Text";
 
+import theme from "../../theme";
+
 const profileHeaderStyles = StyleSheet.create({
   container: {
+    backgroundColor: theme.colors.white,
     flexDirection: "row",
     flexGrow: 1,
     padding: 16,
-    flefDirection: "column",
-    backgroundColor: "white",
   },
   avatarContainer: {
     frexGrow: 0,
@@ -24,14 +25,11 @@ const profileHeaderStyles = StyleSheet.create({
     paddingVertical: 6,
     marginBottom: 3,
   },
-  textStyle: {
-    color: "black",
-  },
   languageStyle: {
+    backgroundColor: theme.colors.primary, // "#0366d6",
     alignSelf: "flex-start",
     borderRadius: 3,
     padding: 3,
-    backgroundColor: "#0366d6",
     overflow: "hidden",
   },
 });
@@ -43,12 +41,7 @@ const ProfileHeader = ({ fullName, ownerAvatarUrl, description, language }) => {
         <AvatarImage imagePath={ownerAvatarUrl} />
       </View>
       <View style={profileHeaderStyles.infoContainer}>
-        <Text
-          color="primary"
-          fontSize="subheading"
-          fontWeight="bold"
-          style={profileHeaderStyles.textStyle}
-        >
+        <Text fontSize="subheading" fontWeight="bold">
           {fullName}
         </Text>
         <View style={profileHeaderStyles.textContainer}>

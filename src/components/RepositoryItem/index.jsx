@@ -3,32 +3,12 @@ import { View, StyleSheet } from "react-native";
 import ProfileHeader from "./ProfileHeader";
 import ProfileStats from "./ProfileStats";
 
+import theme from "../../theme";
+
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: theme.colors.white, //"white",
     flexDirection: "column",
-    backgroundColor: "white",
-  },
-  avatarContainer: {
-    frexGrow: 0,
-    paddingRight: 16,
-  },
-  infoContainer: {
-    frexGrow: 1,
-    paddingTop: 4,
-  },
-  textContainer: {
-    paddingVertical: 6,
-  },
-  textStyle: {
-    color: "black",
-  },
-  languageStyle: {
-    alignSelf: "flex-start",
-    borderRadius: 4,
-    padding: 3,
-    backgroundColor: "#0366d6",
-    borderColor: "#0366d6",
-    margin: 0,
   },
   profileStats: {
     flexDirection: "row",

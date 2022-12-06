@@ -5,11 +5,13 @@ import AppBar from "./AppBar/";
 import RepositoryList from "./RepositoryList";
 import SignIn from "./SignIn";
 
+import theme from "../theme";
+
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: theme.colors.background, // "#e1e4e8",
     flexGrow: 1,
     flexShrink: 1,
-    backgroundColor: "#e1e4e8",
   },
 });
 
