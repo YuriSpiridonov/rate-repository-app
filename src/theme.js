@@ -7,13 +7,17 @@ const theme = {
     black: "#000",
     appBar: "#24292e",
     background: "#e1e4e8",
+    error: "#d73a4a",
+    placeholder: "#C7C7CD",
   },
   fontSizes: {
     body: 14,
     subheading: 16,
   },
   fonts: {
-    main: "System",
+    android: "Roboto",
+    ios: "Arial",
+    default: "System",
   },
   fontWeights: {
     normal: "400",
