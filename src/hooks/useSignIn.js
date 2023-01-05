@@ -8,7 +8,6 @@ export const useSignIn = () => {
     const { data } = await mutate({
       variables: { credentials: { username, password } },
     });
-    console.log("data data ", data.authenticate.accessToken);
     return data;
   };
 

@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 
-// import * as yup from "yup";
+import * as yup from "yup";
 
 import SignInForm from "./SignInForm";
 
@@ -9,13 +9,12 @@ const initialValues = {
   password: "",
 };
 
-// const validationSchema = yup.object().shape({
-//   username: yup.string().required("Username is required"),
-//   password: yup.string().required("Password is required"),
-// });
+const validationSchema = yup.object().shape({
+  username: yup.string().required("Username is required"),
+  password: yup.string().required("Password is required"),
+});
 
-const Login = ({ onSubmit, validationSchema }) => {
-  // const Login = ({ onSubmit }) => {
+const Login = ({ onSubmit }) => {
   return (
     <Formik
       initialValues={initialValues}
