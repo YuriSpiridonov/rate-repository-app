@@ -1,4 +1,6 @@
 import { View, Pressable, StyleSheet } from "react-native";
+import { useHistory } from "react-router-native";
+
 import { Formik } from "formik";
 
 import * as yup from "yup";
@@ -6,6 +8,8 @@ import * as yup from "yup";
 import Text from "./Text";
 import FormikTextInput from "./FormikTextInput";
 import theme from "../theme";
+
+import { useSignIn } from "../hooks/useSignIn";
 
 const loginStyles = StyleSheet.create({
   container: {
@@ -22,9 +26,32 @@ const loginStyles = StyleSheet.create({
   },
 });
 
-const onSubmit = (values) => {
-  console.log(values);
-};
+// const onSubmit = (values) => {
+// const onSubmit = async (values) => {
+//   console.log("values ", values);
+//   const { username, password } = values;
+//   // const { signIn } = useSignIn();
+//   console.log("values 2 ", values);
+//   const [signIn] = useSignIn();
+//   console.log("values 3 ", values);
+//   const history = useHistory();
+
+//   console.log("we are here!");
+//   const { data } = await signIn({ username, password });
+//   console.log("try data ", data);
+
+//   history.push("/");
+
+//   try {
+//     console.log("we are here!");
+//     const { data } = await signIn({ username, password });
+//     console.log("try data ", data);
+
+//     history.push("/");
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
 
 const initialValues = {
   username: "",
@@ -36,7 +63,22 @@ const validationSchema = yup.object().shape({
   password: yup.string().required("Password is required"),
 });
 
-const SignIn = ({ onSubmit }) => {
+const SignIn = () => {
+  const [signIn] = useSignIn();
+  const history = useHistory();
+
+  const onSubmit = async (values) => {
+    const { username, password } = values;
+
+    try {
+      const { data } = await signIn({ username, password });
+      console.log(data);
+      history.push("/");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <View style={loginStyles.container}>
       <FormikTextInput name="username" placeholder="username" />
@@ -54,14 +96,17 @@ const SignIn = ({ onSubmit }) => {
   );
 };
 
-const Login = ({ isValidating }) => {
+const Login = ({ onSubmit }) => {
+  //  isValidating
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit }) => isValidating ?? <SignIn onSubmit={handleSubmit} />}
+      {({ handleSubmit }) => <SignIn onSubmit={handleSubmit} />}
+
+      {/* {({ handleSubmit }) => isValidating ?? <SignIn onSubmit={handleSubmit} />} */}
     </Formik>
   );
 };
