@@ -14,3 +14,12 @@ export const GET_REPOSITORIES = gql`
     }
   }
 `;
+
+export const GET_LOGGEDIN_USER = gql`
+  query {
+    me {
+      id
+      username
+    }
+  }
+`;
