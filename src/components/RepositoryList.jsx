@@ -12,15 +12,14 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryList = () => {
-  const { repositories } = useRepositories();
-
+export const RepositoryListContainer = ({ repositories }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
 
   return (
     <FlatList
+      testID="RepositoryListContainer"
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item, separator }) => (
@@ -39,6 +38,36 @@ const RepositoryList = () => {
       keyExtractor={(item) => item.id}
     />
   );
+};
+
+const RepositoryList = () => {
+  const { repositories } = useRepositories();
+
+  return <RepositoryListContainer repositories={repositories} />;
+  // const repositoryNodes = repositories
+  // ? repositories.edges.map((edge) => edge.node)
+  // : [];
+
+  // return (
+  //   <FlatList
+  //     data={repositoryNodes}
+  //     ItemSeparatorComponent={ItemSeparator}
+  //     renderItem={({ item, separator }) => (
+  //       <RepositoryItem
+  //         fullName={item.fullName}
+  //         description={item.description}
+  //         language={item.language}
+  //         forksCount={item.forksCount}
+  //         stargazersCount={item.stargazersCount}
+  //         ratingAverage={item.ratingAverage}
+  //         reviewCount={item.reviewCount}
+  //         ownerAvatarUrl={item.ownerAvatarUrl}
+  //         style={separator}
+  //       />
+  //     )}
+  //     keyExtractor={(item) => item.id}
+  //   />
+  // );
 };
 
 export default RepositoryList;

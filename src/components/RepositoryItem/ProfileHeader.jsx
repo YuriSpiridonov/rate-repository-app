@@ -41,14 +41,20 @@ const ProfileHeader = ({ fullName, ownerAvatarUrl, description, language }) => {
         <AvatarImage imagePath={ownerAvatarUrl} />
       </View>
       <View style={profileHeaderStyles.infoContainer}>
-        <Text fontSize="subheading" fontWeight="bold">
+        <Text fontSize="subheading" fontWeight="bold" testID="repositoryName">
           {fullName}
         </Text>
         <View style={profileHeaderStyles.textContainer}>
-          <Text color="textSecondary">{description}</Text>
+          <Text color="textSecondary" testID="repositoryDescription">
+            {description}
+          </Text>
         </View>
         <View>
-          <Text color="white" style={profileHeaderStyles.languageStyle}>
+          <Text
+            color="white"
+            style={profileHeaderStyles.languageStyle}
+            testID="repositoryLanguage"
+          >
             {language}
           </Text>
         </View>
