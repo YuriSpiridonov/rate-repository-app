@@ -9,10 +9,15 @@ export const profileStatsStyles = StyleSheet.create({
   },
 });
 
-const ProfileStats = ({ number, value }) => {
+const ProfileStats = ({ number, value, testID }) => {
   return (
     <View style={profileStatsStyles.container}>
-      <Text color="textPrimary" fontSize="subheading" fontWeight="bold">
+      <Text
+        color="textPrimary"
+        fontSize="subheading"
+        fontWeight="bold"
+        testID={testID}
+      >
         {number >= 1000
           ? (number / 1000).toFixed(1).toString() + "k"
           : number.toString()}

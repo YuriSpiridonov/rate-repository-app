@@ -29,7 +29,7 @@ const RepositoryItem = ({
   ownerAvatarUrl,
 }) => {
   return (
-    <View style={styles.container}>
+    <View testID="repositoryItem" style={styles.container}>
       <ProfileHeader
         fullName={fullName}
         ownerAvatarUrl={ownerAvatarUrl}
@@ -37,10 +37,26 @@ const RepositoryItem = ({
         language={language}
       />
       <View style={styles.profileStats}>
-        <ProfileStats number={stargazersCount} value="Stars" />
-        <ProfileStats number={forksCount} value="Forks" />
-        <ProfileStats number={reviewCount} value="Reviews" />
-        <ProfileStats number={ratingAverage} value="Rating" />
+        <ProfileStats
+          number={stargazersCount}
+          value="Stars"
+          testID="repositoryStargazersCount"
+        />
+        <ProfileStats
+          number={forksCount}
+          value="Forks"
+          testID="repositoryForksCount"
+        />
+        <ProfileStats
+          number={reviewCount}
+          value="Reviews"
+          testID="repositoryReviewCount"
+        />
+        <ProfileStats
+          number={ratingAverage}
+          value="Rating"
+          testID="repositoryRatingAverage"
+        />
       </View>
     </View>
   );
