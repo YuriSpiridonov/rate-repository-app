@@ -1,7 +1,4 @@
 /* eslint-disable jest/expect-expect */
-// /* global __DEV__ */
-
-// import { Text, View } from 'react-native'
 import { render } from "@testing-library/react-native";
 
 import { RepositoryListContainer } from "../../components/RepositoryList";
