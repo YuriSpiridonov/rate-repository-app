@@ -1,7 +1,7 @@
-import { StyleSheet, View, Pressable } from "react-native";
+import { StyleSheet, View } from "react-native";
 import FormikTextInput from "../FormikTextInput";
 
-import Text from "../Text";
+import Button from "../Button";
 import theme from "../../theme";
 
 const loginStyles = StyleSheet.create({
@@ -28,11 +28,7 @@ const SignInForm = ({ onSubmit }) => {
         placeholder="password"
         secureTextEntry={true}
       />
-      <Pressable style={loginStyles.button} onPress={onSubmit}>
-        <Text color="white" fontSize="subheading" fontWeight="bold">
-          Sign In
-        </Text>
-      </Pressable>
+      <Button value="Sign In" onSubmit={onSubmit} />
     </View>
   );
 };

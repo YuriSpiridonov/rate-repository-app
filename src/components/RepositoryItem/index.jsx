@@ -7,7 +7,7 @@ import theme from "../../theme";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.colors.white, //"white",
+    backgroundColor: theme.colors.white,
     flexDirection: "column",
   },
   profileStats: {
