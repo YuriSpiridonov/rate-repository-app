@@ -1,4 +1,5 @@
-import { FlatList, View, StyleSheet } from "react-native";
+import { FlatList, View, StyleSheet, Pressable } from "react-native";
+import { useNavigate } from "react-router-native";
 
 import RepositoryItem from "./RepositoryItem";
 
@@ -10,9 +11,28 @@ const styles = StyleSheet.create({
   },
 });
 
+const PressableRepositoryItem = ({ item, navigate }) => {
+  return (
+    <Pressable onPress={() => navigate(`/repository/${item.id}`)}>
+      <RepositoryItem
+        fullName={item.fullName}
+        description={item.description}
+        language={item.language}
+        forksCount={item.forksCount}
+        stargazersCount={item.stargazersCount}
+        ratingAverage={item.ratingAverage}
+        reviewCount={item.reviewCount}
+        ownerAvatarUrl={item.ownerAvatarUrl}
+      />
+    </Pressable>
+  );
+};
+
 const ItemSeparator = () => <View style={styles.separator} />;
 
 export const RepositoryListContainer = ({ repositories }) => {
+  const navigate = useNavigate();
+
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
@@ -22,18 +42,8 @@ export const RepositoryListContainer = ({ repositories }) => {
       testID="RepositoryListContainer"
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item, separator }) => (
-        <RepositoryItem
-          fullName={item.fullName}
-          description={item.description}
-          language={item.language}
-          forksCount={item.forksCount}
-          stargazersCount={item.stargazersCount}
-          ratingAverage={item.ratingAverage}
-          reviewCount={item.reviewCount}
-          ownerAvatarUrl={item.ownerAvatarUrl}
-          style={separator}
-        />
+      renderItem={({ item }) => (
+        <PressableRepositoryItem item={item} navigate={navigate} />
       )}
       keyExtractor={(item) => item.id}
     />
@@ -44,30 +54,6 @@ const RepositoryList = () => {
   const { repositories } = useRepositories();
 
   return <RepositoryListContainer repositories={repositories} />;
-  // const repositoryNodes = repositories
-  // ? repositories.edges.map((edge) => edge.node)
-  // : [];
-
-  // return (
-  //   <FlatList
-  //     data={repositoryNodes}
-  //     ItemSeparatorComponent={ItemSeparator}
-  //     renderItem={({ item, separator }) => (
-  //       <RepositoryItem
-  //         fullName={item.fullName}
-  //         description={item.description}
-  //         language={item.language}
-  //         forksCount={item.forksCount}
-  //         stargazersCount={item.stargazersCount}
-  //         ratingAverage={item.ratingAverage}
-  //         reviewCount={item.reviewCount}
-  //         ownerAvatarUrl={item.ownerAvatarUrl}
-  //         style={separator}
-  //       />
-  //     )}
-  //     keyExtractor={(item) => item.id}
-  //   />
-  // );
 };
 
 export default RepositoryList;
