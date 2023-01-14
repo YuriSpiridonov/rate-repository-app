@@ -52,7 +52,10 @@ const AppBar = () => {
             />
           </>
         ) : (
-          <AppBarTab tabName={"Sign In"} path="/SignIn" style={styles.tab} />
+          <>
+            <AppBarTab tabName={"Sign In"} path="/SignIn" style={styles.tab} />
+            <AppBarTab tabName={"Sign Up"} path="/SignUp" style={styles.tab} />
+          </>
         )}
       </ScrollView>
     </View>
