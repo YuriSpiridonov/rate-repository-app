@@ -28,8 +28,11 @@ export const GET_REPOSITORY = gql`
 
 export const GET_REPOSITORIES = gql`
   ${REPOSITORY_DETAILS}
-  query Repositories {
-    repositories {
+  query Repositories(
+    $orderBy: AllRepositoriesOrderBy
+    $orderDirection: OrderDirection
+  ) {
+    repositories(orderBy: $orderBy, orderDirection: $orderDirection) {
       edges {
         node {
           ...RepositoryDetails
