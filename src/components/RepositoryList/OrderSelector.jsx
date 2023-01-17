@@ -1,13 +1,15 @@
 import { useState } from "react";
-
 import { View, StyleSheet } from "react-native";
 import { Button, Menu, Provider } from "react-native-paper";
 
-import theme from "../theme";
+import Text from "../Text";
 
 const styles = StyleSheet.create({
   sortingBar: {
     height: 44,
+    marginLeft: 4,
+    justifyContent: "center",
+    alignItems: "start",
   },
 });
 
@@ -25,11 +27,10 @@ const OrderSelector = ({ onPress }) => {
           visible={visible}
           onDsmiss={closeMenu}
           anchor={
-            <Button
-              onPress={openMenu}
-              style={{ mergeLeft: 16, color: theme.colors.black }}
-            >
-              {sortingOrder}
+            <Button onPress={openMenu}>
+              <Text color="black" fontSize="subheading">
+                {sortingOrder}
+              </Text>
             </Button>
           }
         >
