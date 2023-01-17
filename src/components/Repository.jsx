@@ -108,7 +108,6 @@ const Repository = () => {
         renderItem={({ item }) => <ReviewItem review={item} />}
         keyExtractor={({ id }) => id}
         ItemSeparatorComponent={ItemSeparator}
-        // inverted={true}
       />
     </>
   );

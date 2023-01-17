@@ -8,13 +8,7 @@ const CreateReview = () => {
 
   const onSubmit = async (values) => {
     const { repositoryOwnerName, repositoryName, rating, review } = values;
-    console.log(
-      "createReview ",
-      repositoryOwnerName,
-      repositoryName,
-      rating,
-      review
-    );
+
     try {
       const { data } = await createReview({
         repositoryOwnerName,
