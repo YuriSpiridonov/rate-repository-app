@@ -32,16 +32,27 @@ export const GET_REPOSITORIES = gql`
     $orderBy: AllRepositoriesOrderBy
     $orderDirection: OrderDirection
     $searchKeyword: String
+    $first: Int
+    $after: String
   ) {
     repositories(
       orderBy: $orderBy
       orderDirection: $orderDirection
       searchKeyword: $searchKeyword
+      first: $first
+      after: $after
     ) {
       edges {
         node {
           ...RepositoryDetails
         }
+        cursor
+      }
+      totalCount
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
       }
     }
   }
