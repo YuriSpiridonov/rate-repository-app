@@ -8,18 +8,24 @@ const RepositoryList = () => {
     orderBy: "CREATED_AT",
     orderDirection: "DESC",
   });
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const onPress = (variables) => {
-    setVariables(variables);
-  };
+  const onChangeSearch = (query) => setSearchQuery(query);
+  const onPress = (variables) => setVariables(variables);
 
   const { repositories } = useRepositories(
     variables.orderBy,
-    variables.orderDirection
+    variables.orderDirection,
+    searchQuery
   );
 
   return (
-    <RepositoryListContainer onPress={onPress} repositories={repositories} />
+    <RepositoryListContainer
+      onPress={onPress}
+      repositories={repositories}
+      onChangeSearch={onChangeSearch}
+      searchQuery={searchQuery}
+    />
   );
 };
 

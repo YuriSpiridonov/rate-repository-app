@@ -1,7 +1,9 @@
 import OrderSelector from "./OrderSelector";
+import SearchBar from "./SearchBar";
 
-const RepositoryListHeader = ({ onPress }) => (
+const RepositoryListHeader = ({ onPress, onChangeSearch, searchQuery }) => (
   <>
+    <SearchBar onChangeSearch={onChangeSearch} searchQuery={searchQuery} />
     <OrderSelector onPress={onPress} />
   </>
 );

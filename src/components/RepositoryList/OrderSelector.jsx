@@ -6,7 +6,7 @@ import Text from "../Text";
 
 const styles = StyleSheet.create({
   sortingBar: {
-    height: 44,
+    height: 58,
     marginLeft: 4,
     justifyContent: "center",
     alignItems: "start",

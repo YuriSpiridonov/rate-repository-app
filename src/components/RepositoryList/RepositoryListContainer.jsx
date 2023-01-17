@@ -18,8 +18,14 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 class RepositoryListContainer extends React.Component {
   renderHeader = () => {
-    const { onPress } = this.props;
-    return <RepositoryListHeader onPress={onPress} />;
+    const { onPress, onChangeSearch, searchQuery } = this.props;
+    return (
+      <RepositoryListHeader
+        onPress={onPress}
+        onChangeSearch={onChangeSearch}
+        searchQuery={searchQuery}
+      />
+    );
   };
 
   render() {
