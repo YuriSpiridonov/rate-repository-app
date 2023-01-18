@@ -18,12 +18,19 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 class RepositoryListContainer extends React.Component {
   renderHeader = () => {
-    const { onPress } = this.props;
-    return <RepositoryListHeader onPress={onPress} />;
+    const { onPress, onChangeSearch, searchQuery } = this.props;
+    return (
+      <RepositoryListHeader
+        onPress={onPress}
+        onChangeSearch={onChangeSearch}
+        searchQuery={searchQuery}
+      />
+    );
   };
 
   render() {
-    const { repositories } = this.props;
+    const { repositories, onEndReach } = this.props;
+    console.log("onEndEach ", onEndReach);
     const repositoryNodes = repositories
       ? repositories.edges.map((edge) => edge.node)
       : [];
@@ -37,6 +44,8 @@ class RepositoryListContainer extends React.Component {
         ListHeaderComponentStyle={styles.listHeader}
         renderItem={({ item }) => <PressableRepositoryItem item={item} />}
         keyExtractor={(item) => item.id}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
       />
     );
   }
