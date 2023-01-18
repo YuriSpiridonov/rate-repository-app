@@ -1,20 +1,17 @@
 import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
 import RepositoryListHeader from "./RepositoryListHeader";
 import PressableRepositoryItem from "./PressableRepositoryItem";
 
+import ItemSeparator from "../ItemSeparator";
+
 const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-  },
   listHeader: {
     zIndex: 1,
     elevation: 1,
   },
 });
-
-const ItemSeparator = () => <View style={styles.separator} />;
 
 class RepositoryListContainer extends React.Component {
   renderHeader = () => {
@@ -30,7 +27,6 @@ class RepositoryListContainer extends React.Component {
 
   render() {
     const { repositories, onEndReach } = this.props;
-    console.log("onEndEach ", onEndReach);
     const repositoryNodes = repositories
       ? repositories.edges.map((edge) => edge.node)
       : [];
