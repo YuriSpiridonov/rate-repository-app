@@ -7,6 +7,7 @@ import RepositoryList from "./RepositoryList";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import CreateReview from "./CreateReview";
+import MyReviews from "./MyReviews";
 
 import theme from "../theme";
 
@@ -28,6 +29,7 @@ const Main = () => {
         <Route path="/SignUp" element={<SignUp />} exact />
         <Route path="/repository/:id" element={<Repository />} exact />
         <Route path="/CreateReview" element={<CreateReview />} exact />
+        <Route path="/MyReviews" element={<MyReviews />} exact />
       </Routes>
     </View>
   );

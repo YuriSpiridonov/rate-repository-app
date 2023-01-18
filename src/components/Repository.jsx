@@ -38,7 +38,9 @@ const Repository = () => {
     fetchMore();
   };
 
-  const reviews = repository.reviews.edges;
+  const reviews = repository
+    ? repository.reviews.edges.map((egde) => egde.node)
+    : [];
 
   const handleSubmit = () => {
     return Linking.openURL(repository.url);
@@ -63,7 +65,7 @@ const Repository = () => {
       <FlatList
         data={reviews}
         renderItem={({ item }) => <ReviewItem review={item} />}
-        keyExtractor={({ id }) => id}
+        keyExtractor={({ item }) => item.id}
         ItemSeparatorComponent={ItemSeparator}
         onEndReached={onEndReach}
         onEndReachedThreshold={0.5}

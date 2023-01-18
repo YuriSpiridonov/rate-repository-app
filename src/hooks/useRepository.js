@@ -11,7 +11,6 @@ const useRepository = (repositoryId, first) => {
   });
 
   const handleFetchMore = () => {
-    console.log(data?.repository.reviews.pageInfo.hasNextPage);
     const canFetchMore =
       !loading && data?.repository.reviews.pageInfo.hasNextPage;
 

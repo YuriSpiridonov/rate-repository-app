@@ -2,9 +2,9 @@ import { StyleSheet, View } from "react-native";
 
 import { format } from "date-fns";
 
-import Text from "../Text";
+import Text from "./Text";
 
-import theme from "../../theme";
+import theme from "../theme";
 
 const repositoryStyles = StyleSheet.create({
   reviewContainer: {
@@ -33,23 +33,23 @@ const ReviewItem = ({ review }) => {
   if (!review) {
     return null;
   }
-  const date = format(new Date(review.node.createdAt), "dd.MM.yyyy");
+  const date = format(new Date(review.createdAt), "dd.MM.yyyy");
 
   return (
     <View style={repositoryStyles.reviewContainer}>
       <View style={repositoryStyles.reviewRating}>
         <Text fontSize="subheading" fontWeight="bold" color="primary">
-          {review.node.rating}
+          {review.rating}
         </Text>
       </View>
       <View style={repositoryStyles.reviewText}>
         <Text fontSize="subheading" fontWeight="bold">
-          {review.node.user.username}
+          {review.user ? review.user.username : review.repository.fullName}
         </Text>
         <Text color="textSecondary" style={{ paddingTop: 3, paddingBottom: 3 }}>
           {date}
         </Text>
-        <Text>{review.node.text}</Text>
+        <Text>{review.text}</Text>
       </View>
     </View>
   );
