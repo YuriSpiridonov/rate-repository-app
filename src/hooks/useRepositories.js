@@ -13,7 +13,6 @@ const useRepositories = (orderBy, orderDirection, searchKeyword, first) => {
   });
 
   const handleFetchMore = () => {
-    console.log(data?.repositories.pageInfo.hasNextPage);
     const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
 
     if (!canFetchMore) {

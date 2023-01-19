@@ -14,6 +14,11 @@ const cache = new InMemoryCache({
         repositories: relayStylePagination(),
       },
     },
+    Repository: {
+      fields: {
+        reviews: relayStylePagination(),
+      },
+    },
   },
 });
 
@@ -36,7 +41,7 @@ const createApolloClient = (authStorage) => {
   });
   return new ApolloClient({
     link: authLink.concat(httpLink),
-    cache, // : new InMemoryCache(),
+    cache,
   });
 };
 
