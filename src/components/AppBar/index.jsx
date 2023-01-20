@@ -1,15 +1,11 @@
 import { View, StyleSheet, ScrollView } from "react-native";
 import { useContext } from "react";
-import {
-  // useQuery,
-  useApolloClient,
-} from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 
 import Constants from "expo-constants";
 import AppBarTab from "./AppBarTab";
 import AuthStorageContext from "../../contexts/AuthStorageContext";
 import useAuthUser from "../../hooks/useAuthUser";
-// import { GET_LOGGEDIN_USER } from "../../graphql/queries";
 
 import theme from "../../theme";
 

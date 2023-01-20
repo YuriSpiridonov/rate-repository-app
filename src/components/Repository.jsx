@@ -1,14 +1,14 @@
 import { FlatList, StyleSheet, View } from "react-native";
 import { useParams } from "react-router-native";
 import * as Linking from "expo-linking";
-import useRepository from "../../hooks/useRepository";
+import useRepository from "../hooks/useRepository";
 
 import ReviewItem from "./ReviewItem";
-import RepositoryItem from "../RepositoryItem";
-import ItemSeparator from "../ItemSeparator";
-import Button from "../Button";
+import RepositoryItem from "./RepositoryItem";
+import ItemSeparator from "./ItemSeparator";
+import Button from "./Button";
 
-import theme from "../../theme";
+import theme from "../theme";
 
 const repositoryStyles = StyleSheet.create({
   container: {
@@ -65,7 +65,7 @@ const Repository = () => {
       <FlatList
         data={reviews}
         renderItem={({ item }) => <ReviewItem review={item} />}
-        keyExtractor={({ item }) => item.id}
+        keyExtractor={({ id }) => id}
         ItemSeparatorComponent={ItemSeparator}
         onEndReached={onEndReach}
         onEndReachedThreshold={0.5}
