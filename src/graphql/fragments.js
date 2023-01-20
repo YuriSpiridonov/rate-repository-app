@@ -13,3 +13,20 @@ export const REPOSITORY_DETAILS = gql`
     ratingAverage
   }
 `;
+
+export const PAGE_DETAILS = gql`
+  fragment PageDetails on PageInfo {
+    endCursor
+    startCursor
+    hasNextPage
+  }
+`;
+
+export const REVIEW_DETAILS = gql`
+  fragment ReviewDetails on Review {
+    id
+    text
+    rating
+    createdAt
+  }
+`;

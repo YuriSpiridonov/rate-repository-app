@@ -1,9 +1,11 @@
 import { gql } from "@apollo/client";
 
-import { REPOSITORY_DETAILS } from "./fragments";
+import { REPOSITORY_DETAILS, PAGE_DETAILS, REVIEW_DETAILS } from "./fragments";
 
 export const GET_REPOSITORY = gql`
   ${REPOSITORY_DETAILS}
+  ${PAGE_DETAILS}
+  ${REVIEW_DETAILS}
   query Repository($repositoryId: ID!, $first: Int, $after: String) {
     repository(id: $repositoryId) {
       ...RepositoryDetails
@@ -11,10 +13,7 @@ export const GET_REPOSITORY = gql`
       reviews(first: $first, after: $after) {
         edges {
           node {
-            id
-            text
-            rating
-            createdAt
+            ...ReviewDetails
             user {
               id
               username
@@ -24,9 +23,7 @@ export const GET_REPOSITORY = gql`
         }
         totalCount
         pageInfo {
-          endCursor
-          startCursor
-          hasNextPage
+          ...PageDetails
         }
       }
     }
@@ -35,6 +32,7 @@ export const GET_REPOSITORY = gql`
 
 export const GET_REPOSITORIES = gql`
   ${REPOSITORY_DETAILS}
+  ${PAGE_DETAILS}
   query Repositories(
     $orderBy: AllRepositoriesOrderBy
     $orderDirection: OrderDirection
@@ -57,15 +55,14 @@ export const GET_REPOSITORIES = gql`
       }
       totalCount
       pageInfo {
-        endCursor
-        startCursor
-        hasNextPage
+        ...PageDetails
       }
     }
   }
 `;
 
 export const GET_LOGGEDIN_USER = gql`
+  ${REVIEW_DETAILS}
   query User($includeReviews: Boolean!) {
     me {
       id
@@ -73,11 +70,9 @@ export const GET_LOGGEDIN_USER = gql`
       reviews @include(if: $includeReviews) {
         edges {
           node {
-            id
-            text
-            rating
-            createdAt
+            ...ReviewDetails
             repository {
+              id
               fullName
             }
           }
